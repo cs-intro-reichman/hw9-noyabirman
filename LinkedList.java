@@ -108,7 +108,15 @@ public class LinkedList {
 	 *        the given memory block
 	 */
 	public void addLast(MemoryBlock block) {
-		add(size, block);
+		Node toAdd=new Node(block);
+		if (size==0) {
+			last= toAdd;
+			first=toAdd;
+			size++;
+		}
+		last.next= toAdd;
+		last=toAdd;
+		size++;
 	}
 	
 	/**
