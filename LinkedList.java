@@ -229,12 +229,12 @@ public class LinkedList {
 	 * A textual representation of this list, for debugging.
 	 */
 	public String toString() {
-		String str= "";
-		Node index= first;
-		while (index!=null){
-			str+= index.block.toString()+" ";
-			index=index.next;
+		String s = "";
+		Node current= first;
+		while (current!=null){
+			s= s+ current.block +" ";
+			current=current.next;
 		}
-		return str;
+		return s;
 	}
 }
