@@ -89,13 +89,32 @@ public class LinkedList {
 		if (index == 0){
 			newNode.next= first;
 			first= newNode;
-			if (size==0) last=newNode;
 			size++;
 			return;
 		}
-		Node prev= getNode(index-1);
-		newNode.next= prev.next;
+		if (size==0){
+			first=newNode;
+			last=newNode;
+			size++;
+			return;
+		}
+		else if (index==size){
+			last.next=newNode;
+			last=newNode;
+			size++;
+			return;
+		}
+		int count= 0;
+		Node curr= first;
+		Node prev= null;
+		while (count!= index){
+			prev=curr;
+			curr=curr.next;
+			count++;
+		}
 		prev.next=newNode;
+		newNode.next= curr;
+		
 		size++;
 		
 	}
