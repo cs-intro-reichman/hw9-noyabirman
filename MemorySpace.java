@@ -60,10 +60,12 @@ public class MemorySpace {
 	public int malloc(int length) {		
 		if (length<=0) throw new IllegalArgumentException("length can not be less than 0");
 		Node current= freeList.getFirst();
+		Node previous= null;
 		while (current!=null){
 			if (current.block.length >= length){
 				break;
 			}
+			previous=current;
 			current = current.next;
 		}
 		if (current== null) return -1;

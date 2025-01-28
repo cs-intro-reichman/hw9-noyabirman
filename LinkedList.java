@@ -86,34 +86,20 @@ public class LinkedList {
 		}
 		Node newNode= new Node(block);
 
-		if (index == 0){
-			newNode.next= first;
-			first= newNode;
-			size++;
-			return;
-		}
 		if (size==0){
 			first=newNode;
 			last=newNode;
-			size++;
-			return;
-		}
-		else if (index==size){
+		} else if (index == 0){
+			newNode.next= first;
+			first= newNode;
+		} else if (index==size){
 			last.next=newNode;
 			last=newNode;
-			size++;
-			return;
+		} else {
+			Node prev= getNode(index-1);
+			newNode.next=prev.next;
+			prev.next=newNode;
 		}
-		int count= 0;
-		Node curr= first;
-		Node prev= null;
-		while (count!= index){
-			prev=curr;
-			curr=curr.next;
-			count++;
-		}
-		prev.next=newNode;
-		newNode.next= curr;
 		
 		size++;
 		
@@ -172,12 +158,12 @@ public class LinkedList {
 	public int indexOf(MemoryBlock block) {
 		Node current= first;
 		int result=0;
-		for (int i=0 ; i< size; i++){
-			if (!(current.block.equals(block))){
-				current=current.next;
-				result++;
+		while (current!= null){
+			if (current.block.equals(block)){
+				return result;
 			}
-			return result;
+			current=current.next;
+			result++;
 		}
 		return -1;
 	}
@@ -203,8 +189,8 @@ public class LinkedList {
 		}
 		if (current.next== node){
 			current.next=node.next;
-			size--;
 			if (node== last) last= current;
+			size--;
 		}
 	}
 
