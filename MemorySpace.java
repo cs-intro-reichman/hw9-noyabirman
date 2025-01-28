@@ -68,7 +68,9 @@ public class MemorySpace {
 			previous=current;
 			current = current.next;
 		}
-		if (current== null) return -1;
+		if (current== null) {
+			throw new IllegalArgumentException("No available Memory block allocation");
+		}
 		MemoryBlock allocatedBlock= new MemoryBlock(current.block.baseAddress, length);
 		allocatedList.addLast(allocatedBlock);
 
