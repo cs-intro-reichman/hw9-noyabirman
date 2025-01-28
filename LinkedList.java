@@ -176,8 +176,8 @@ public class LinkedList {
 	 *        the node that will be removed from this list
 	 */
 	public void remove(Node node) {
-		if (node== null) throw new IllegalArgumentException("nullPointer");
-		if (size==0) return ;
+		if (node== null) throw new NullPointerException(" NullPointerExeption!");
+		if (size==0) throw new IllegalStateException("  NullPointerException!");
 		if (node== first){
 			first= first.next;
 			size--;
